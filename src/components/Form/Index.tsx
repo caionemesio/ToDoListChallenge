@@ -1,12 +1,19 @@
 import { useForm } from "react-hook-form";
 import Container from "../Container";
 import InputForm from "./InputForm/Index";
+import { useToDoList } from "../../contexts/TodoContext";
+import { bodyInformationTask } from "../../interfaces/interfaces";
 
 export default function Form() {
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
-  const onSubmit = (data: any) => {
-    console.log(data)
+  const { addTask } = useToDoList()
+  const onSubmit = (data: Record<string, any>) => {
+    const task:bodyInformationTask = {
+      name: data.taskName,
+      description: data.taskDescription
+    }
+    addTask(task)
     reset()
   }
   return (

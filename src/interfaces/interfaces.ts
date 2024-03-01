@@ -13,3 +13,21 @@ export interface InputFormProps {
   register: UseFormRegister<FieldValues>
   errors: FieldErrors<FieldValues>
 }
+export interface bodyInformationTask{
+  name: string,
+  description: string
+}
+
+export interface Task extends bodyInformationTask {
+  date: string,
+  id: number
+}
+
+
+
+export interface ToDoContextType {
+  data: Task[]
+  count:number
+  addTask:(task: bodyInformationTask) => void;
+  removeTask:(id:number)=>void;
+}
