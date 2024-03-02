@@ -1,4 +1,4 @@
-import { ContainerProps } from "../interfaces/interfaces";
+import { ContainerProps } from "../../interfaces/interfaces";
 
 
 const Container: React.FC<ContainerProps> = ({ children, className, ...props }) => {

@@ -1,9 +1,9 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { ContainerProps, Task, ToDoContextType, bodyInformationTask } from "../interfaces/interfaces";
-
+import { format } from 'date-fns';
 const ToDoContext = createContext<ToDoContextType>({
   data: [],
-  count:0,
+  count: 0,
   addTask: () => { },
   removeTask: () => { }
 })
@@ -20,10 +20,10 @@ export const TasksProvider: React.FC<ContainerProps> = ({ children }) => {
     }
   })
 
-  const[count,setCount]=useState<number>(()=>{
-    const AccumulatorCount= localStorage.getItem('tasks-finished')
-    if(!AccumulatorCount) return 0
-    try{
+  const [count, setCount] = useState<number>(() => {
+    const AccumulatorCount = localStorage.getItem('tasks-finished')
+    if (!AccumulatorCount) return 0
+    try {
       return JSON.parse(AccumulatorCount);
     } catch (error) {
       console.error('Error parsing stoored data')
@@ -33,8 +33,10 @@ export const TasksProvider: React.FC<ContainerProps> = ({ children }) => {
 
   const addTask = ({ name, description }: bodyInformationTask) => {
     const id: number = Math.floor(Math.random() * 1000000)
-    const date: string = new Date().toLocaleString()
-    const task: Task = { name, description, id, date }
+    const currentDate: Date = new Date()
+    const formattedDate: string = format(currentDate, "dd MMMM yyyy 'at' hh:mm a")
+
+    const task: Task = { name, description, id, date: formattedDate }
     setData(state => {
       const newState = [task, ...state]
       localStorage.setItem('todolist-lib', JSON.stringify(newState))
@@ -45,14 +47,14 @@ export const TasksProvider: React.FC<ContainerProps> = ({ children }) => {
   const removeTask = (id: number) => {
     const indexToDelete = data.findIndex(t => t.id === id)
 
-    if(indexToDelete!==-1){
-      const uptatedTasks=[...data]
-      uptatedTasks.splice(indexToDelete,1)
+    if (indexToDelete !== -1) {
+      const uptatedTasks = [...data]
+      uptatedTasks.splice(indexToDelete, 1)
       setData(uptatedTasks)
-      localStorage.setItem('todolist-lib',JSON.stringify(uptatedTasks))
+      localStorage.setItem('todolist-lib', JSON.stringify(uptatedTasks))
       alert(`The task has been completed, congratulations!`)
-      setCount((count)=>count+1)
-      localStorage.setItem('tasks-finished',JSON.stringify(count+1))
+      setCount((count) => count + 1)
+      localStorage.setItem('tasks-finished', JSON.stringify(count + 1))
     }
 
 

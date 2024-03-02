@@ -1,29 +1,29 @@
 
 import './App.css'
-import Container from './components/Container'
+import ApiComponent from './components/ApiComponent/Index'
 import Form from './components/Form/Index'
-import Header from './components/Header'
+import Header from './components/Header/Index'
 import ShowTasks from './components/ShowTasks/Index'
-import { useToDoList } from './contexts/TodoContext'
+import TasksFinished from './components/TasksFinished/Index'
+import { IoHeartSharp } from "react-icons/io5";
+
 
 
 
 export default function App() {
-  const {count}=useToDoList()
- 
+
   return (
     <>
       <Header />
       <main className='flex '>
-      <ShowTasks/>
+        <ShowTasks />
         <section>
-          <Container className='w-[340px] mb-4'>
-            <h3 className='font-semibold pt-4 text-xl' >Finished tasks quantity</h3>
-            <span className='font-semibold  text-title' >{count}</span>
-          </Container>
+          <TasksFinished />
           <Form />
         </section>
       </main>
+      <ApiComponent/>
+      <footer className='opacity-60 flex fixed bottom-0 pb-[30px] text-secondary font-extralight'>@Did from <span className='px-1'><IoHeartSharp size={20} /></span>by Caio Nemésio</footer>
     </>
 
   )
