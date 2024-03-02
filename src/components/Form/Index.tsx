@@ -17,7 +17,7 @@ export default function Form() {
     reset()
   }
   return (
-    <Container>
+    <Container className='max-md:w-auto flex flex-col items-center '>
       <h3 className='font-semibold py-4 text-xl '>Add new to do</h3>
       <form onSubmit={handleSubmit(onSubmit)}>
         <InputForm id='taskName' register={register} errors={errors} label='Task Name:' placeholder='Studying' />
