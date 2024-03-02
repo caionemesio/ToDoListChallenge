@@ -3,7 +3,7 @@ import Container from "../Container/Index";
 import { TiDelete } from "react-icons/ti";
 export default function ShowTasks() {
     const { data, removeTask } = useToDoList()
-
+    //renderizando todas as tasks através do método map e importando os dados do hook useToDoList
     return (
         <Container className='w-[700px] h-[449px] mr-4 overflow-x-auto max-md:w-auto  max-md:mr-0  '>
             <h3 className=' font-semibold text-xl text-left py-4 pl-5 '>To do</h3>

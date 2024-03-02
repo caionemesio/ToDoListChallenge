@@ -1,30 +1,36 @@
-# React + TypeScript + Vite
+## Documentação das Etapas do Projeto
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este documento tem como objetivo fornecer uma visão abrangente do desenvolvimento do projeto Today: Do The Thing, detalhando as etapas e as decisões tomadas durante o processo.
 
-Currently, two official plugins are available:
+### Etapa 1: Configuração do Ambiente e Criação do Projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Instalação das ferramentas essenciais: Node.js, TypeScript e React.
+- Criação do projeto utilizando o comando `npm create vite@latest`.
+- Configuração do ambiente de desenvolvimento, incluindo as bibliotecas necessárias.
 
-## Expanding the ESLint configuration
+### Etapa 2: Implementação das Funcionalidades Básicas
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Desenvolvimento dos componentes principais e sua organização na pasta `components`.
+- Criação da pasta `interfaces` para lidar com a tipagem dos dados.
+- Implementação do `TodoContext` para fornecer variáveis e funções essenciais em toda a aplicação.
+- Desenvolvimento da lógica para adicionar e deletar tarefas, utilizando o React Hook Form para gerenciar o formulário.
+- Utilização do `localStorage` para armazenar as tarefas localmente no dispositivo.
 
-- Configure the top-level `parserOptions` property like this:
+### Etapa 3: Integração com a API do Chuck Norris
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- Configuração da integração com a API do Chuck Norris, utilizando as bibliotecas Axios e React Query.
+- Implementação da lógica para exibir piadas motivacionais a cada 5 segundos na tela principal da aplicação.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Etapa 4: Criação do Repositório no GitHub
+
+- Criação de um repositório no GitHub para o projeto.
+- Upload do código fonte e dos arquivos necessários para o repositório.
+- Configuração do README.md e documentação do projeto.
+
+### Etapa 5: Estilização e Ajustes de Layout
+
+- Utilização do Tailwind CSS para estilizar os componentes da aplicação.
+- Adaptação do design conforme o protótipo fornecido no Figma.
+- Ajustes de layout e responsividade para garantir uma experiência de usuário consistente em diferentes dispositivos.
+
+Cada etapa foi documentada minuciosamente, proporcionando uma compreensão clara do processo de desenvolvimento do projeto e das decisões tomadas em cada fase.

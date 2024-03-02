@@ -1,6 +1,8 @@
 import { createContext, useContext, useState } from "react";
 import { ContainerProps, Task, ToDoContextType, bodyInformationTask } from "../interfaces/interfaces";
 import { format } from 'date-fns';
+
+//Inicializando o contexto inicial com os dados que irá receber
 const ToDoContext = createContext<ToDoContextType>({
   data: [],
   count: 0,
@@ -8,7 +10,10 @@ const ToDoContext = createContext<ToDoContextType>({
   removeTask: () => { }
 })
 
+
 export const TasksProvider: React.FC<ContainerProps> = ({ children }) => {
+  //salvando os dados e contador no useState e no localStorage, caso já´tenha dados armazenados no localhost 
+  //o useState irá obter esses dados
   const [data, setData] = useState<Task[]>(() => {
     const storedData = localStorage.getItem('todolist-lib')
     if (!storedData) return []
@@ -19,7 +24,7 @@ export const TasksProvider: React.FC<ContainerProps> = ({ children }) => {
       return []
     }
   })
-
+  
   const [count, setCount] = useState<number>(() => {
     const AccumulatorCount = localStorage.getItem('tasks-finished')
     if (!AccumulatorCount) return 0
@@ -31,9 +36,11 @@ export const TasksProvider: React.FC<ContainerProps> = ({ children }) => {
     }
   })
 
+  //Função para adicionar tarefa 
   const addTask = ({ name, description }: bodyInformationTask) => {
     const id: number = Math.floor(Math.random() * 1000000)
     const currentDate: Date = new Date()
+    //Utilização da biblioteca date-fns para formata o tipo de data recebida
     const formattedDate: string = format(currentDate, "dd MMMM yyyy 'at' hh:mm a")
 
     const task: Task = { name, description, id, date: formattedDate }
@@ -43,7 +50,7 @@ export const TasksProvider: React.FC<ContainerProps> = ({ children }) => {
       return newState
     })
   }
-
+  //Função para Remover tarefa 
   const removeTask = (id: number) => {
     const indexToDelete = data.findIndex(t => t.id === id)
 
@@ -59,6 +66,7 @@ export const TasksProvider: React.FC<ContainerProps> = ({ children }) => {
 
 
   }
+  
   const contexValue: ToDoContextType = {
     data,
     count,
@@ -74,6 +82,7 @@ export const TasksProvider: React.FC<ContainerProps> = ({ children }) => {
   )
 }
 
+//Criação do hook useToDoList para facilitar o uso desses dados
 export const useToDoList = () => {
   const context = useContext(ToDoContext)
   if (!context) {

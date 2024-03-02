@@ -5,7 +5,7 @@ import { useToDoList } from "../../contexts/TodoContext";
 import { bodyInformationTask } from "../../interfaces/interfaces";
 
 export default function Form() {
-
+  //Utilização do react form 
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const { addTask } = useToDoList()
   const onSubmit = (data: Record<string, any>) => {
