@@ -1,5 +1,8 @@
 ## Documentação das Etapas do Projeto
 
+**Link para a aplicação hospedada:**
+[https://to-do-list-challenge-blush.vercel.app/](https://to-do-list-challenge-blush.vercel.app/)
+
 Este documento tem como objetivo fornecer uma visão abrangente do desenvolvimento do projeto Today: Do The Thing, detalhando as etapas e as decisões tomadas durante o processo.
 
 ### Etapa 1: Configuração do Ambiente e Criação do Projeto
